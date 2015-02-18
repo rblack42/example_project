@@ -1,0 +1,44 @@
+environment:
+  global:
+    CMD_IN_ENV: "cmd /E:ON /V:ON /C .\\appveyor\\run_with_env.cmd"
+
+  matrix:
+    - PYTHON: "C:\\Python27"
+      PYTHON_VERSION: "2.7.8"
+      PYthON_ARCH: "32"
+
+    - PYTHON:  "C:\\Python27-x64"
+      PYTHON_VERSION: "2.7.8"
+      PYthON_ARCH: "64"
+    
+    - PYTHON: "C:\\Python34"
+      PYTHON_VERSION: "3.4.2"
+      PYthON_ARCH: "32"
+
+    - PYTHON:  "C:\\Python34-x64"
+      PYTHON_VERSION: "3.4.2"
+      PYthON_ARCH: "64"
+
+  install:
+    - ECHO "FIlesystem root:"
+    - ps: "ls \"C:/\""
+
+    # install using official Python msi files
+    - "powershell ./appveyor/install.ps1"
+    - "SET PATH=%PYTHON%;%PYTHON\\Scripts;%PATH%"
+
+    # check Python version
+    - "python --version"
+
+    # Check installed arch
+    - "python -c \"import struct; print(struct.calcsize('P') * 8)\""
+
+    # Install dependencies
+    - "%CMD_IN_ENV% pip install -r requirements.txt"
+
+build: false # not needed ror Python
+
+test_script:
+    - "%CMD_IN_ENV% py.test"
+
+    
