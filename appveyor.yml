@@ -5,7 +5,7 @@ environment:
 
   init:
     - "ECHO %PYTHON%"
-    -ps: "ls C:/Python*"
+    - ps: "ls C:/Python*"
 
   install:
     - ps: (new-object net.webclient).DownloadFile('https://raw.github.com/pypa/pip/master/contrip/get-pip.py', 'C:/get-pip.py')
