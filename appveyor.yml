@@ -16,5 +16,5 @@ install:
 build: False
 
 test_script:
-  - "py.test"
+  - "%PYTHON%/Scripts/py.test"
 
