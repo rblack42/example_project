@@ -1,22 +1,17 @@
+version: '{build}
 environment:
   matrix:
     - PYTHON: "C:/Python27"
     - PYTHON: "C:/Python34"
 
-init:
-  - git config --global core.autocrlf input
-  - "ECHO %PYTHON%"
-  - ps: "ls C:/Python*"
-
 install:
-  - ps: (new-object net.webclient).DownloadFile('https://raw.github.com/pypa/pip/master/contrip/get-pip.py', 'C:/get-pip.py')
+  - appveyor DownloadFile https://bootstrap.pypa.io/get-pip.py
   - "%PYTHON%/python.exe C:/get-pip.py"
   - "%PYTHON$/Scripts/pip.exe install --upgrade setuptools"
   - "%PYTHON%/Scripts/pip.exe install -r requirements.txt"
 
-build: false # not needed ror Python
+build: False
 
 test_script:
   - "py.test"
 
-    
