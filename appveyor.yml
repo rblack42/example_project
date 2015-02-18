@@ -4,6 +4,7 @@ environment:
     - PYTHON: "C:/Python34"
 
   init:
+    - git config --global core.autocrlf input
     - "ECHO %PYTHON%"
     - ps: "ls C:/Python*"
 
