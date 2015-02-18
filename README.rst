@@ -6,5 +6,7 @@ Example Project
 
 ..  image:: https://travis-ci.org/rblack42/example_project.svg?branch=master
 
+..  image:: https://ci.appveyor.com/api/projects/status/cgye52x74qoc2gkq?svg=true
+
 This is an example project demonstrating the setup of a Python project that
 uses freely available ``continuous integration`` services.
