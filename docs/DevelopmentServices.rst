@@ -321,6 +321,11 @@ Here is the basic file I set up:
 ..  literalinclude::    ../appveyor.yml
     :linenos:
 
+Now, when we push changes to the project to GitHub_, both TravisCI_ and
+AppVeyor_ will run builds to verify that the project works properly on both
+Linux and Windows. (Now, I am wondering if there is a similar service for
+Macs!)
+
 AppVeyor_ also creates a badge for your ``README`` file. To get the URL for
 your badge, check on the ``settings`` menu for the project. I added the URL to
 my ``README`` file, and this is the result:
@@ -328,10 +333,25 @@ my ``README`` file, and this is the result:
 ..  image:: AppVeyor.jpg
     :align: center
 
-
+Hey! We are making progress!
     
 CoverAlls
 *********
+
+WHen testing code, one of the metrics we should monitor is the percentage of the code in the project that has been tested. This is not a complete measure of the quality of the code, but there is an old saying:
+
+    If it has not been tested, it does not work!
+
+So, we want to make sure all lines of cod ein the project have been exercised during some test. 
+
+There is a nice tool for Python projects that can do this check: coveralls_. We install this package by adding another line to our ``requirements.txt`` file:
+
+..  code-block:: text
+
+    coveralls==
+
+There is another free service `Coveralls.io`_, that will create a nice report on your coverage statistics.
+
 
 Landscape
 *********

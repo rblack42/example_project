@@ -1,7 +1,5 @@
 [run]
 omit =
-    */tests*
+    */_venv/*
+    *__init__*
 
-[report]
-    exclude_lines =
-        if __name__ == .__main__.:
