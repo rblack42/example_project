@@ -1,0 +1,583 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Development Services &mdash; example_project 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="example_project 0.1.0 documentation" href="index.html" />
+    <link rel="next" title="Glossary" href="glossary.html" />
+    <link rel="prev" title="Welcome to example_project’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="glossary.html" title="Glossary"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to example_project’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">example_project 0.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="development-services">
+<h1>Development Services<a class="headerlink" href="#development-services" title="Permalink to this headline">¶</a></h1>
+<p>When you set out to build a significant Python project, you could work alone
+until your project is ready for release into the &#8220;wild&#8221;. You could do that, but
+you would miss out on a huge benefit you get by making things public long
+before it is really ready to go.</p>
+<p>There are a bunch of free services you can use to make sure your development is
+going smoothly as you work through the design. Tapping into these services
+can help you spot problems and fix them early in the process. Here are a few of
+the free services you can use:</p>
+<div class="section" id="id2">
+<h2>GitHub<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>This is a big one. Employers are telling us they want to see your work on
+<a class="reference external" href="https://github.com/">GitHub</a>, regardless of the programming language you choose to use for your
+project. <a class="reference external" href="https://github.com/">GitHub</a> is free for <a class="reference internal" href="glossary.html#term-open-source"><em class="xref std std-term">open-source</em></a> projects, or you can pay a fee
+to keep your projects private if your choose. Alternatively, I set up a private
+server running a clone of <a class="reference external" href="https://github.com/">GitHub</a>, called <a class="reference external" href="https://about.gitlab.com/">GitLab</a>, for use by my students as
+part of their work in my classes. <a class="reference external" href="https://about.gitlab.com/">GitLab</a> provides services similar to <a class="reference external" href="https://github.com/">GitHub</a>
+from their project website. You can also install <a class="reference external" href="https://about.gitlab.com/">GitLab</a> on a Linux server and
+host it in your home office using a <a class="reference internal" href="glossary.html#term-dynamic-dns"><em class="xref std std-term">Dynamic DNS</em></a> service. This will
+allow you to reach your server from anywhere you can get on the Internet.
+<a class="reference external" href="https://about.gitlab.com/">GitLab</a> also offers free hosting for your project if you do not want to run
+your own server.</p>
+<p>To get your project on <a class="reference external" href="https://github.com/">GitHub</a>, you sign up for a free account using a username
+and password. Your username becomes part of the URL your project will get. For
+example, I set up an example project named <tt class="docutils literal"><span class="pre">example_project</span></tt> for this
+lecture. <a class="reference external" href="https://github.com/">GitHub</a> set up a URL for the project at
+<tt class="docutils literal"><span class="pre">https://github.com/rblack42/example_project.git</span></tt>.  In this URL, my username
+is <tt class="docutils literal"><span class="pre">rblack42,</span> <span class="pre">and</span> <span class="pre">the</span> <span class="pre">project</span> <span class="pre">name</span> <span class="pre">is</span> <span class="pre">``example_project.</span> <span class="pre">GitHub_</span> <span class="pre">added</span> <span class="pre">the</span>
+<span class="pre">``.git</span></tt> part.</p>
+<p>As you create the project, you have a chance to set up a basic <tt class="docutils literal"><span class="pre">README</span></tt> file,
+a <tt class="docutils literal"><span class="pre">.gitignore</span></tt> file that is designed for the programming language you intend
+to use, and a basic license file. (I use the <tt class="docutils literal"><span class="pre">New</span> <span class="pre">BSD</span></tt> license for my
+projects. By adding these few files, your project will be ready to clone onto
+your development system:</p>
+<div class="highlight-text"><div class="highlight"><pre>$ git clone https://rblack42/example_project.git``
+$ cd example_project/
+</pre></div>
+</div>
+<p>You will end up with a project directory named <tt class="docutils literal"><span class="pre">example_project</span></tt> on your
+system already set up so <a class="reference external" href="http://git-scm.com/">Git</a> can manage it.</p>
+</div>
+<div class="section" id="id3">
+<h2>virtualenv<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>If you work on several Python projects on the same development machine,
+eventually you will run into dependency issues. You have one package that needs
+another one to function, and these packages end up needing conflicting versions
+of each other. <a class="reference external" href="http://www.ianbicking.org/">Ian Bicking</a> solved this problem by creating the <a class="reference external" href="https://pypi.python.org/pypi/virtualenv">virtualenv</a>
+package which sets up an isolated Python environment where you can install only
+those packages (with correct versions) needed by your project. Furthermore, you
+can set up a <tt class="docutils literal"><span class="pre">requirements.txt</span></tt> file and list all the packages and versions
+you need, and let <tt class="docutils literal"><span class="pre">pip</span></tt> install everything for you. Most serious Python
+developers use these tools as part of their normal work flow!</p>
+<p>As an example, on my Mac I installed <a class="reference external" href="https://pypi.python.org/pypi/virtualenv">virtualenv</a> using this command:</p>
+<div class="highlight-python"><div class="highlight"><pre>..  code-block:: text
+</pre></div>
+</div>
+<blockquote>
+<div>$ pip install virtualenv</div></blockquote>
+<p>Next, I added an alias to my <tt class="docutils literal"><span class="pre">.bash_profile</span></tt> that looks like this:</p>
+<div class="highlight-text"><div class="highlight"><pre>alias workon=&#39;source _venv/bin/activate&#39;
+</pre></div>
+</div>
+<p>Finally, in my newly cloned project directory, I do this:</p>
+<div class="highlight-text"><div class="highlight"><pre>~/_projects/example_project$ virtualenv _venv
+New python executable in _venv/bin/python2.7
+Also creating executable in _venv/bin/python
+Installing setuptools, pip...done.
+</pre></div>
+</div>
+<p>When I want to work on the project, I do this:</p>
+<div class="highlight-text"><div class="highlight"><pre>~/_projects/example_project$ workon
+(_venv)~/_projects/example_project
+</pre></div>
+</div>
+<p>Notice that the prompt has changed to remind you that you are working in a
+&#8220;virtual environment&#8221;. There is a command to deactivate this environment, but I
+usually just close the window.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">I have a habit of naming some directories with a leading underscore. That
+makes these names appear at the top of any directory listing I see, so I
+can get to it quickly as I navigate around in the file explorer tools.</p>
+</div>
+</div>
+<div class="section" id="pytest">
+<h2>PyTest<a class="headerlink" href="#pytest" title="Permalink to this headline">¶</a></h2>
+<p>A nice Python package for managing tests is <a class="reference internal" href="#pytest">PyTest</a>. Now that we are working in
+a <a class="reference external" href="https://pypi.python.org/pypi/virtualenv">virtualenv</a>, we can install this package easily using <tt class="docutils literal"><span class="pre">pip</span></tt>. To demonstrate
+how the requirements.txt file works, here is the firat line I add to this file
+in the new project:</p>
+<div class="highlight-text"><div class="highlight"><pre>pytest==2.6.4
+</pre></div>
+</div>
+<p>Then you install it by doing this:</p>
+<div class="highlight-text"><div class="highlight"><pre>$ pip install -r requirements.txt
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you leave off the version part (&#8216;==2.6.4&#8217;), you get the most recent
+version. After doing that, you should update your <cite>requirements.txt</cite> file
+to reflect the version you actually used in your project. That way, if the
+project evolves, you can still install the correct version. You can update
+your project to use the new version as needed at a later time.</p>
+</div>
+<div class="section" id="something-to-test">
+<h3>Something to Test<a class="headerlink" href="#something-to-test" title="Permalink to this headline">¶</a></h3>
+<p>Now that <a class="reference internal" href="#pytest">PyTest</a> has been installed, let&#8217;s give it something to test. Normally
+we keep all tests in a separate directory. You may or may not decide to release
+the tests with your project. I feel that releasing the tests is a good idea,
+since you can find out if there are any problems in unexpected environments by
+letting your users test things and report back if any issues pop up!</p>
+<p>Here is the first test file, named <tt class="docutils literal"><span class="pre">test_dummy.py</span></tt>. Create a new <tt class="docutils literal"><span class="pre">tests</span></tt>
+subdirectory for this file:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">inc</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">test_inc</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">inc</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span>
+</pre></div>
+</td></tr></table></div>
+<p>Before we run this test, we need to tell <a class="reference internal" href="#pytest">PyTest</a> not to look into our
+<a class="reference external" href="https://pypi.python.org/pypi/virtualenv">virtualenv</a> subdirectory, or else it will try to run tests we are not really
+interested in running. To do this, create a <tt class="docutils literal"><span class="pre">pytest.ini</span></tt> file in the project
+root directory with these lines:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span class="p">[</span><span class="n">pytest</span><span class="p">]</span>
+<span class="n">norecursedirs</span> <span class="o">=</span> <span class="n">_venv</span>
+</pre></div>
+</td></tr></table></div>
+<p>With this test and control file in place, we can run the test:</p>
+<div class="highlight-text"><div class="highlight"><pre>$ py.test
+================================ test session starts ================================
+platform darwin -- Python 2.7.8 -- py-1.4.26 -- pytest-2.6.4
+collected 1 items
+
+tests/test_dummy.py .
+
+============================= 1 passed in 0.03 seconds ==============================
+</pre></div>
+</div>
+<p>Great! Our project is on track with a real (silly) test that works, and we have
+not even started writing any real project code yet! Time to let the world know
+how our project is doing!</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>TravisCI<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://travis-ci.org/">TravisCI</a> is a nice free service that works with <a class="reference external" href="https://github.com/">GitHub</a> to test your project
+code. You can sign up for this service using your <a class="reference external" href="https://github.com/">GitHub</a> credentials, making
+the process pretty easy! <a class="reference external" href="https://travis-ci.org/">TravisCI</a> will download a list of your public projects
+from <a class="reference external" href="https://github.com/">GitHub</a> and you can select the ones you want to test with this service by
+clicking on a menu item.</p>
+<p>You need to add a new file to the root of your project folder, and commit
+everything in your project, then push your changes up to <a class="reference external" href="https://github.com/">GitHub</a>.</p>
+<p>Here is a starter <tt class="docutils literal"><span class="pre">.travis.yml</span></tt> file for this project:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre>language: python
+python:
+  - &quot;2.7&quot;
+  - &quot;3.4&quot;
+
+# command to install dependencies
+install: 
+  - pip install -r requirements.txt
+
+# command to run tests
+script:
+  - nosetests --with-coverage
+
+after_success:
+  - coveralls
+</pre></div>
+</td></tr></table></div>
+<p>Before we check all of this in to <a class="reference external" href="https://github.com/">GitHub</a>, we need to see what <a class="reference external" href="http://git-scm.com/">Git</a> thinks
+about everything:</p>
+<div class="highlight-text"><div class="highlight"><pre>$ git status
+
+On branch master
+Your branch is up-to-date with &#39;origin/master&#39;.
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+    .travis.yml
+    _venv/
+    pytest.ini
+    requirements.txt
+    tests/
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+</pre></div>
+</div>
+<p>We do not want the <a class="reference external" href="https://pypi.python.org/pypi/virtualenv">virtualenv</a> directory to end up on <a class="reference external" href="https://github.com/">GitHub</a> so we edit the
+<tt class="docutils literal"><span class="pre">.gitignore</span></tt> file to add these lines at the end:</p>
+<div class="highlight-text"><div class="highlight"><pre># virtualenv
+_venv
+</pre></div>
+</div>
+<p>Rerun <tt class="docutils literal"><span class="pre">git</span> <span class="pre">status</span></tt> to confirm that <a class="reference external" href="http://git-scm.com/">Git</a> is no longer looking at that directory, then
+commit and push your changes:</p>
+<div class="highlight-text"><div class="highlight"><pre>$ git add .
+$ git commit -m &quot;initial project setup&quot;
+$ git push origin master
+</pre></div>
+</div>
+<p>After this push, you can navigate to your <a class="reference external" href="https://travis-ci.org/">TravisCI</a> account page and watch the
+action. Travis will clone your project into a new <a class="reference external" href="https://pypi.python.org/pypi/virtualenv">virtualenv</a> and run your
+tests. Depending on the load on their servers, this may take a few minutes.</p>
+<p>Here is the last part of what I saw on my build run:</p>
+<div class="highlight-text"><div class="highlight"><pre>git.checkout
+0.05s$ git clone --depth=50 --branch=master git://github.com/rblack42/example_project.git rblack42/example_project
+Cloning into &#39;rblack42/example_project&#39;...
+remote: Counting objects: 16, done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 16 (delta 3), reused 12 (delta 3), pack-reused 0
+Receiving objects: 100% (16/16), done.
+Resolving deltas: 100% (3/3), done.
+Checking connectivity... done.
+$ cd rblack42/example_project
+$ git checkout -qf 8b153311fd5bcdc054dd67e000a0f2e5b849a056
+0.01s$ source ~/virtualenv/python3.4/bin/activate
+$ python --version
+Python 3.4.2
+$ pip --version
+pip 6.0.7 from /home/travis/virtualenv/python3.4.2/lib/python3.4/site-packages (python 3.4)
+install
+0.52s$ pip install -r requirements.txt
+You are using pip version 6.0.7, however version 6.0.8 is available.
+You should consider upgrading via the &#39;pip install --upgrade pip&#39; command.
+Requirement already satisfied (use --upgrade to upgrade): pytest==2.6.4 in /home/travis/virtualenv/python3.4.2/lib/python3.4/site-packages (from -r requirements.txt (line 1))
+Requirement already satisfied (use --upgrade to upgrade): py&gt;=1.4.25 in /home/travis/virtualenv/python3.4.2/lib/python3.4/site-packages (from pytest==2.6.4-&gt;-r requirements.txt (line 1))
+0.34s$ py.test
+============================= test session starts ==============================
+platform linux -- Python 3.4.2 -- py-1.4.26 -- pytest-2.6.4
+collected 1 items
+
+tests/test_dummy.py .
+
+=========================== 1 passed in 0.05 seconds ===========================
+
+The command &quot;py.test&quot; exited with 0.
+Done. Your build exited with 0.
+</pre></div>
+</div>
+<p>Once you set things up, every time you push changes to your project on <a class="reference external" href="https://github.com/">GitHub</a>
+<a class="reference external" href="https://travis-ci.org/">TravisCI</a> gets notified and it checks our a copy of your code into a brand new
+virtual server, then runs your tests to see that everything is working. If so,
+you can post a &#8220;badge&#8221; on your project <tt class="docutils literal"><span class="pre">README</span></tt> page so folks can see that the
+project is in good shape. On the other hand, if your project fails any of the
+tests you have set up, the badge will show that as well, so potential users of
+your code will shy away, or might help you fix things if this is a cool
+project! <a class="reference internal" href="glossary.html#term-open-source"><em class="xref std std-term">Open-source</em></a> can be fun!</p>
+<p>To see your new badge, add these lines to the <tt class="docutils literal"><span class="pre">README</span></tt> file and get it up to
+<a class="reference external" href="https://github.com/">GitHub</a> (which will trigger a new build, by the way!). I like to use
+<a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> markup in my <tt class="docutils literal"><span class="pre">README</span></tt> file, and <a class="reference external" href="https://github.com/">GitHub</a> formats this nicely
+for the web browser.</p>
+<div class="highlight-text"><div class="highlight"><pre>Example Project
+###############
+
+:author:    Roie R. Black
+:version:   0.1.0
+
+..  image:: https://travis-ci.org/rblack42/example_project.svg?branch=master.
+
+This project is a demonstration of many ``continuous integration`` services
+for Python developers.
+</pre></div>
+</div>
+<p>And, here is my newly issued badge:</p>
+<img alt="_images/TravisCIbadge.jpg" class="align-center" src="_images/TravisCIbadge.jpg" />
+<p>That green badge is what developers stay up late at night to see. If the build
+fails, the badge is red and says &#8220;failing&#8221;. Not a good situation to be in when
+you stop working!</p>
+</div>
+<div class="section" id="appveyor">
+<h2>AppVeyor<a class="headerlink" href="#appveyor" title="Permalink to this headline">¶</a></h2>
+<p>Another nice free service that can test your application is <a class="reference internal" href="#appveyor">AppVeyor</a>. This
+project is unique in that it will deploy and test your project on a Windows
+server. If you expect your users to want to run your project on Windows
+systems, this service is a must!</p>
+<p>Once again, you can use your <a class="reference external" href="https://github.com/">GitHub</a> credentials to set up an account here.</p>
+<p>You need to add a configuration file in the project root, and this is another
+<a class="reference external" href="http://yaml.org/">YAML</a> file. I had some issues building this file, since it is very picky about
+spaces use din indenting. Fortunately, there is a <a class="reference external" href="https://ci.appveyor.com/tools/validate-yaml">appveyor.yml validation</a>  page on the <a class="reference internal" href="#appveyor">AppVeyor</a> site
+that will check your file before you push it to <a class="reference external" href="https://github.com/">GitHub</a>.</p>
+<p>Here is the basic file I set up:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre>version: &#39;{build}&#39;
+environment:
+  matrix:
+    - PYTHON: &quot;C:/Python27&quot;
+    - PYTHON: &quot;C:/Python34&quot;
+
+init:
+  - git config --global core.autocrlf input
+
+install:
+  - ps: (new-object net.webclient).DownloadFile(&#39;https://bootstrap.pypa.io/get-pip.py&#39;, &#39;C:/get-pip.py&#39;)
+  - &quot;%PYTHON%/python.exe C:/get-pip.py&quot;
+  - &quot;%PYTHON%/Scripts/pip.exe install --upgrade setuptools&quot;
+  - &quot;%PYTHON%/Scripts/pip.exe install -r requirements.txt&quot;
+
+build: False
+
+test_script:
+  - &quot;%PYTHON%/Scripts/py.test&quot;
+</pre></div>
+</td></tr></table></div>
+<p>Now, when we push changes to the project to <a class="reference external" href="https://github.com/">GitHub</a>, both <a class="reference external" href="https://travis-ci.org/">TravisCI</a> and
+<a class="reference internal" href="#appveyor">AppVeyor</a> will run builds to verify that the project works properly on both
+Linux and Windows. (Now, I am wondering if there is a similar service for
+Macs!)</p>
+<p><a class="reference internal" href="#appveyor">AppVeyor</a> also creates a badge for your <tt class="docutils literal"><span class="pre">README</span></tt> file. To get the URL for
+your badge, check on the <tt class="docutils literal"><span class="pre">settings</span></tt> menu for the project. I added the URL to
+my <tt class="docutils literal"><span class="pre">README</span></tt> file, and this is the result:</p>
+<img alt="_images/AppVeyor.jpg" class="align-center" src="_images/AppVeyor.jpg" />
+<p>Hey! We are making progress!</p>
+</div>
+<div class="section" id="coveralls">
+<h2>CoverAlls<a class="headerlink" href="#coveralls" title="Permalink to this headline">¶</a></h2>
+<p>WHen testing code, one of the metrics we should monitor is the percentage of the code in the project that has been tested. This is not a complete measure of the quality of the code, but there is an old saying:</p>
+<blockquote>
+<div>If it has not been tested, it does not work!</div></blockquote>
+<p>So, we want to make sure all lines of cod ein the project have been exercised during some test.</p>
+<p>There is a nice tool for Python projects that can do this check: <a class="reference internal" href="#coveralls">coveralls</a>. We install this package by adding another line to our <tt class="docutils literal"><span class="pre">requirements.txt</span></tt> file:</p>
+<div class="highlight-text"><div class="highlight"><pre>coveralls==
+</pre></div>
+</div>
+<p>There is another free service <a class="reference external" href="https://coveralls.io/">Coveralls.io</a>, that will create a nice report on your coverage statistics.</p>
+</div>
+<div class="section" id="landscape">
+<h2>Landscape<a class="headerlink" href="#landscape" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://landscape.io/">http://landscape.io/</a></li>
+</ul>
+</div></blockquote>
+<p>This is a free service for <a class="reference internal" href="glossary.html#term-open-source"><em class="xref std std-term">open-source</em></a> projects.</p>
+</div>
+<div class="section" id="pypi">
+<h2>PyPi<a class="headerlink" href="#pypi" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="version">
+<h3>Version<a class="headerlink" href="#version" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="downloads">
+<h3>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="wheel">
+<h3>Wheel<a class="headerlink" href="#wheel" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="supported-versions">
+<h3>Supported Versions<a class="headerlink" href="#supported-versions" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="scrutinizer">
+<h2>Scrutinizer<a class="headerlink" href="#scrutinizer" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="readthedocs">
+<h3>ReadTheDocs<a class="headerlink" href="#readthedocs" title="Permalink to this headline">¶</a></h3>
+<p>Every project needs documentation, and the best projects have excellent user
+level, and developer level documentation. Much of the documentation is produced
+using python <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> which is the standard tool used by the Python project
+itself.</p>
+<p><a class="reference internal" href="#readthedocs">ReadTheDocs</a> is a web site that will post your documentation for the world to
+see. All you need to do is generate then using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> as part of your project
+on <a class="reference external" href="https://github.com/">GitHub</a>, then set up <a class="reference internal" href="#readthedocs">ReadTheDocs</a> to pull down new versions every time you
+commit changes to your code. (You do update the documentation as well, right?)</p>
+<p>Sign up for a free account on <a class="reference internal" href="#readthedocs">ReadTheDocs</a> and use their web menu to set up the
+project. Make sure you add <a class="reference external" href="http://sphinx-doc.org/">SPhinx</a> to your <tt class="docutils literal"><span class="pre">requirememts.txt</span></tt> file:</p>
+<div class="highlight-text"><div class="highlight"><pre>sphinx==1.2.3
+</pre></div>
+</div>
+<p>Now, each time you commit changes, your documentation will be updated.</p>
+</div>
+</div>
+<div class="section" id="tox">
+<h2>Tox<a class="headerlink" href="#tox" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#tox">Tox</a> is a command line tool that checks to see if your project works properly
+with multiple versions of Python. It will create a <cite>virtual environment</cite> for
+designated versions of Python, install your project in those environments, then
+run test to make sure everything works. You can use <a class="reference internal" href="#tox">Tox</a> as a standalone tool
+on your workstation, or have <a class="reference external" href="https://travis-ci.org/">TravisCI</a> automatically do all of these tests for
+you.</p>
+<p>To use <a class="reference internal" href="#tox">Tox</a> in your project, you add one file, <tt class="docutils literal"><span class="pre">tox.ini</span></tt> to the root of your
+project. Then, you run the <tt class="docutils literal"><span class="pre">tox</span></tt> command in that project directory. Here is a
+starter <tt class="docutils literal"><span class="pre">tox.ini</span></tt> file:</p>
+<div class="highlight-text"><div class="highlight"><pre>[tox]
+envlist = py27, py34
+
+[testenv]
+deps=pytest
+commands=py.test
+</pre></div>
+</div>
+<p>This setup assumes that the project is set up to run tests using PyTest, and the
+script will run the tests using Python 2.7 and Python 3.4.</p>
+</div>
+<div class="section" id="putting-all-this-together">
+<h2>Putting all this Together<a class="headerlink" href="#putting-all-this-together" title="Permalink to this headline">¶</a></h2>
+<p>To see how to set all of this up, let&#8217;s create a dummy project with all of
+these services at work to check things. Stand back, this will involve a bit of
+work!</p>
+<p>Step1: Create the project directory</p>
+<p>Step2: Get the project on GitHub</p>
+<p>Step3: Add some sample code</p>
+<p>Step5: Add a few tests</p>
+<p>Step6: Set Up TravisCI</p>
+<p>Step7: Set up your Documentation</p>
+<p>Step8: Add in ReadTheDocs</p>
+<p>Step8: Add in</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Development Services</a><ul>
+<li><a class="reference internal" href="#id2">GitHub</a></li>
+<li><a class="reference internal" href="#id3">virtualenv</a></li>
+<li><a class="reference internal" href="#pytest">PyTest</a><ul>
+<li><a class="reference internal" href="#something-to-test">Something to Test</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">TravisCI</a></li>
+<li><a class="reference internal" href="#appveyor">AppVeyor</a></li>
+<li><a class="reference internal" href="#coveralls">CoverAlls</a></li>
+<li><a class="reference internal" href="#landscape">Landscape</a></li>
+<li><a class="reference internal" href="#pypi">PyPi</a><ul>
+<li><a class="reference internal" href="#version">Version</a></li>
+<li><a class="reference internal" href="#downloads">Downloads</a></li>
+<li><a class="reference internal" href="#wheel">Wheel</a></li>
+<li><a class="reference internal" href="#supported-versions">Supported Versions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scrutinizer">Scrutinizer</a><ul>
+<li><a class="reference internal" href="#readthedocs">ReadTheDocs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tox">Tox</a></li>
+<li><a class="reference internal" href="#putting-all-this-together">Putting all this Together</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to example_project&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="glossary.html"
+                        title="next chapter">Glossary</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/DevelopmentServices.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="glossary.html" title="Glossary"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to example_project’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">example_project 0.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Roie R. Black.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
