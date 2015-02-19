@@ -8,7 +8,9 @@ Example Project
 
 ..  image:: https://ci.appveyor.com/api/projects/status/cgye52x74qoc2gkq?svg=true
 
-..  image:: https://readthedocs.org/projects/example-project/?badge=latest
+..  image:: https://readthedocs.org/projects/example-project/badge/?version=latest
+    :target: https://readthedocs.org/projects/example-project/?badge=latest
+    :alt: Documentation Status
 
 This is an example project demonstrating the setup of a Python project that
 uses freely available ``continuous integration`` services.

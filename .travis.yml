@@ -9,7 +9,7 @@ install:
 
 # command to run tests
 script:
-  - nosetests --with-coverage
+  - "py.test ."
 
 after_success:
   - coveralls
